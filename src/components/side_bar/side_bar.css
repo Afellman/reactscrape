@@ -1,0 +1,9 @@
+.search-results {
+  background: rgba(9, 8, 17, 0.685);
+  width: 30%;
+  display: inline-block;
+  position: fixed;
+  left: 0px;
+  color: white;
+  border-radius: 5px; 
+}
