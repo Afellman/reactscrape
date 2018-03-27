@@ -2,7 +2,6 @@
   background: url('http://getwallpapers.com/wallpaper/full/3/f/f/19640.jpg');
   background-repeat: no-repeat;
   background-size: cover;
-  
   min-height: 100px;
   border-radius: 0px;
 }
@@ -14,7 +13,7 @@
   font-size: 4em;
 }
 
-@media screen and (max-width: 567px) {
+@media screen and (max-width: 640px) {
   .jumbotron {
     background-position-y: 0px
   }

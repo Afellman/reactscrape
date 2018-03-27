@@ -5,7 +5,11 @@
   min-width: 650px;
 }
 
-@media screen and (max-width: 567px){
+.body > p::first-letter {
+  font-size: 1.1;
+}
+
+@media screen and (max-width: 800px){
   .body {
     max-width: 80%;
     min-width: 80%;
