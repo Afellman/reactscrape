@@ -24,24 +24,24 @@ const Astroids = props => {
     }
 
     function draw() {
+      
       // getting screen center;
       let x_center = (window.innerWidth / 2) - 50;
       let y_center = (window.innerHeight / 2) - 100;
+
       // checking if the canvas is on the dom, otherwise the page has been changed
       // so stop the animation.
       if (document.getElementById('myCanvas')){
-      var ctx = document.getElementById('myCanvas').getContext('2d');
-    } else return;
+        var ctx = document.getElementById('myCanvas').getContext('2d');
+      } else return;
 
-      ctx.clearRect(0, 0, window.innerWidth, window.innerHeight); // clear canvas
+       // clear canvas
+      ctx.clearRect(0, 0, window.innerWidth, window.innerHeight);
       ctx.save();
       ctx.translate(x_center, y_center);
+
       // Drawing earth
-      
-      // ctx.shadowColor = "#d6d6d66c";
-      // ctx.shadowBlur = 20;
-      // ctx.shadowOffsetX = 0;
-      // ctx.shadowOffsetY = 0;
+
       ctx.drawImage(earth, 0, 0, 100 , 100);
       ctx.translate(50, 50);
       time = time + 0.1
@@ -54,10 +54,10 @@ const Astroids = props => {
         let size = sizeFull / 10;
         let speed = ((speedFull / 100000) * time);
         let distance = distanceFull / 20000;
-
+        console.log(distance)
         // scaling back the super far away ones
-        if (distance > 1000) {
-          distance = distance / 4.5
+        if (distance > 500) {
+          distance = distance / 10.5
         }
         // trying to highlight selected astroid but teh ani keeps resetting
         if (props.selectedAstroid === element.name) {
