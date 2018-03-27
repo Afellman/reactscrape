@@ -8,7 +8,7 @@
 
 .jumbotron > h1 {
   margin-bottom: 0px;
-  padding: 8%;
+  padding: 5%;
   color: white;
   font-size: 4em;
 }
@@ -18,7 +18,7 @@
     background-position-y: 0px
   }
   .jumbotron > h1 {
-    padding: 6%;
+    padding: 1%;
     font-size: 3em; 
   }
 }
