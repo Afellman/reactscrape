@@ -1,9 +1,28 @@
 .search-results {
-  background: rgba(9, 8, 17, 0.685);
-  width: 30%;
   display: inline-block;
-  position: fixed;
-  left: 0px;
+  background: rgba(9, 8, 17, 0.685);
   color: white;
   border-radius: 5px; 
+  position: fixed;
+  max-width: 300px;
+  max-height: calc(100vh - 65px);
+  top: 65px;
+  bottom: 0px;
+  left: 0px;
+  overflow-y: scroll;
+  padding: 20px;
+  transition: 2s;
 }
+
+.search-results > ul > li {
+  transition: 300ms ease-out;
+  
+}
+.search-results > ul > li:hover {
+  color: rgb(207, 118, 118);
+} 
+
+.search-results p {
+  pointer-events: none;
+  margin-bottom: 5px;
+} 

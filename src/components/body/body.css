@@ -1,0 +1,15 @@
+.body {
+  margin: 0 auto;
+  margin-top: 50px;
+  max-width: 50%;
+  min-width: 650px;
+}
+
+@media screen and (max-width: 567px){
+  .body {
+    max-width: 80%;
+    min-width: 80%;
+    width: 80%
+    
+  }
+}

@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from 'react-router-dom'
+import './nav.css';
 
 const Nav = (props) => {
 
@@ -10,13 +11,13 @@ const Nav = (props) => {
       <div className="nav-links">
         <ul>
           <li>
-            <Link activeClassName="active" to="/home">Home</Link>
+            <Link className={window.location.pathname === "/home" ? "active" : ""} to="/home">Home</Link>
           </li>
           <li>
-            <Link activeClassName="active" to="/astroids">Find Astroids</Link>
+            <Link className={window.location.pathname === "/astroids" ? "active" : ""}  to="/astroids">Astroids</Link>
           </li>
           <li>
-            <Link activeClassName="active" to="/saved">Saved</Link>
+            <Link className={window.location.pathname === "/saved" ? "active" : ""}  to="/saved">Saved</Link>
           </li>
         </ul>
         

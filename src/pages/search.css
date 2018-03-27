@@ -1,0 +1,49 @@
+.search-buttons {
+  position: fixed;
+  top: 45%;
+  left: 45%;
+}
+
+#details {
+  position: fixed;
+  top: 45%;
+  right: 0px;
+  height: 10%;
+}
+.search-buttons > h3 {
+  text-align: center;
+  color: white;
+}
+
+.search-buttons > input {
+  display: block;
+  border-radius: 5px;
+  background: rgb(0, 238, 255);
+  padding: 5px;
+}
+
+.search-buttons > button {
+  display: block;
+  margin: 0 auto;
+  margin-top: 10px; 
+
+}
+
+
+.side-bar-enter {
+  opacity: 0.01;
+}
+
+.side-bar-enter.side-bar-enter-active {
+  opacity: 1;
+  transition: opacity 500ms ease-in;
+}
+
+.side-bar-leave {
+  opacity: 1;
+}
+
+.side-bar-leave.side-bar-leave-active {
+  opacity: 0.01;
+  transition: opacity 300ms ease-in;
+}

@@ -2,6 +2,10 @@ import React, { Component } from 'react';
 import API from '../utils/scrape'
 import Astroids from '../components/astroids'
 import SideBar from "../components/side_bar"
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group'; 
+import './search.css'
+
+
 
 class Search extends Component {
   // -- Setting the state
@@ -9,9 +13,13 @@ class Search extends Component {
   state = {
     date: "",
     results: [],
-    sideBarDisplay : false
+    sideBarDisplay : false,
+    buttonDisplsy: true,
+    detailsDisplay: false,
+    selectedAstroid: ""
   }
-  // -- Function to get image data from api
+
+  // -------------- Function to get image data from api -----------------------
   getImages = (event) => {
     event.preventDefault();
     let nasaData = [];
@@ -22,33 +30,55 @@ class Search extends Component {
       let meteorsObj = res.data.near_earth_objects;
       // grabbing the first element in the object
       let meteors = meteorsObj[Object.keys(meteorsObj)[0]]
-      this.setState({results: meteors})
+      this.setState({results: meteors,buttonDisplsy: false, detailsDisplay: true})
     })
+    // removing buttons
+     
   }
+// --------------------------------------------------------
 
+  // data binding? 
   updateDate = (event) => {
     event.preventDefault()
     this.setState({date: event.target.value})
   }
 
-    showBar = (event) => {
-      event.preventDefault()
-      if (this.state.sideBarDisplay) {
-        this.setState({sideBarDisplay: false})  
-      } else {
-        this.setState({sideBarDisplay: true})
-      }
+  // --------------- Function to show/hide sidebar -------------------
+  showBar = (event) => {
+    event.preventDefault()
+    if (this.state.sideBarDisplay) {
+      this.setState({sideBarDisplay: false})  
+    } else {
+      this.setState({sideBarDisplay: true})
+    }
   }
+
+  glow = (event) => {
+    this.setState({selectedAstroid: event.target.className})
+  }
+// ----------------------------------------------------------
+
+// --------------- Stuff to render ----------------------
   render() {
     return (
       <div>
-        <div className="search-buttons">
-          <button type="submit" style={{float: "right"}} className="btn btn-primary" onClick={this.showBar}>Show Details</button>
-          {this.state.sideBarDisplay ? <SideBar results={this.state.results}/> : null }
-          <input id="" className="btn btn-dark" type="date" value={this.state.date} onChange={this.updateDate.bind(this)}/>
-          <button type="submit" onClick={this.getImages}>Submit</button>
-        </div>
-        <Astroids results={this.state.results}/>
+        {this.state.detailsDisplay ?
+          <button type="submit" id="details" className="btn btn-dark" onClick={this.showBar}>Show Details</button>
+        : null }  
+        <ReactCSSTransitionGroup
+          transitionName="side-bar"
+          transitionEnterTimeout={500}
+          transitionLeaveTimeout={300}>
+          {this.state.sideBarDisplay ? <SideBar results={this.state.results} glow={this.glow}/>  : null }
+        </ReactCSSTransitionGroup>
+        {this.state.buttonDisplsy ? 
+          <div className="search-buttons">
+            <h3>Choose a date</h3>
+            <input id="" type="date" value={this.state.date} onChange={this.updateDate.bind(this)}/>
+            <button type="submit" className="btn btn-dark" onClick={this.getImages}>Submit</button>
+          </div>
+        : null }
+        <Astroids selectedAstroid={this.state.selectedAstroid} results={this.state.results}/>
       </div>
     );
   }
