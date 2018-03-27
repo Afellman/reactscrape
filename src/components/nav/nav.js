@@ -11,7 +11,7 @@ const Nav = (props) => {
       <div className="nav-links">
         <ul>
           <li>
-            <Link className={window.location.pathname === "/home" ? "active" : ""} to="/home">Home</Link>
+            <Link className={window.location.pathname === "/home" ? "active" : ""} to="/">Home</Link>
           </li>
           <li>
             <Link className={window.location.pathname === "/astroids" ? "active" : ""}  to="/astroids">Astroids</Link>
