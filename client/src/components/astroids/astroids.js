@@ -3,7 +3,7 @@ import API from '../../utils/scrape'
 import styles from './astroids.css'
 
 
-
+let runani = true;
 
 const Astroids = props => {
 
@@ -83,9 +83,12 @@ const Astroids = props => {
   // ----------------------------------------------------------------
 
 // Starting the animation when props is populated with the api results
-  if(props.results.length > 1) {
+  if(props.results.length > 1 && runani) {
+    runani = false;
     startAni()
   }
+
+
   return(
     <div>
       <canvas id="myCanvas" width={window.innerWidth} height={window.innerHeight - 65}></canvas>

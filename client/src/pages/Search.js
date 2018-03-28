@@ -16,7 +16,8 @@ class Search extends Component {
     sideBarDisplay : false,
     buttonDisplsy: true,
     detailsDisplay: false,
-    selectedAstroid: ""
+    selectedAstroid: "",
+    runAni: false
   }
 
   // -------------- Function to get image data from api -----------------------
@@ -30,7 +31,7 @@ class Search extends Component {
       let meteorsObj = res.data.near_earth_objects;
       // grabbing the first element in the object
       let meteors = meteorsObj[Object.keys(meteorsObj)[0]]
-      this.setState({results: meteors,buttonDisplsy: false, detailsDisplay: true})
+      this.setState({results: meteors,buttonDisplsy: false, detailsDisplay: true, runAni: true})
     })
     // removing buttons
      
@@ -78,7 +79,7 @@ class Search extends Component {
             <button type="submit" className="btn btn-dark" onClick={this.getImages}>Submit</button>
           </div>
         : null }
-        <Astroids selectedAstroid={this.state.selectedAstroid} results={this.state.results}/>
+        <Astroids selectedAstroid={this.state.selectedAstroid} ani={this.state.runAni} results={this.state.results}/>
       </div>
     );
   }

@@ -2,7 +2,7 @@
   border: 1px solid black;
   background: url('http://getwallpapers.com/wallpaper/full/1/f/e/427366.jpg');
   background-repeat: no-repeat;
-  background-position-y: 0px;
+  background-position-y: -100px;
   background-size: cover;
 }
 /* Hmm media queryies not working.... */
