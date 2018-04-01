@@ -31,7 +31,8 @@ class Search extends Component {
       let meteorsObj = res.data.near_earth_objects;
       // grabbing the first element in the object
       let meteors = meteorsObj[Object.keys(meteorsObj)[0]]
-      this.setState({results: meteors,buttonDisplsy: false, detailsDisplay: true, runAni: true})
+
+      this.setState({results: meteors, buttonDisplsy: false, detailsDisplay: true, runAni: true})
     })
     // removing buttons
      
@@ -57,6 +58,8 @@ class Search extends Component {
   glow = (event) => {
     this.setState({selectedAstroid: event.target.className})
   }
+
+ 
 // ----------------------------------------------------------
 
 // --------------- Stuff to render ----------------------
@@ -70,7 +73,7 @@ class Search extends Component {
           transitionName="side-bar"
           transitionEnterTimeout={500}
           transitionLeaveTimeout={300}>
-          {this.state.sideBarDisplay ? <SideBar results={this.state.results} glow={this.glow}/>  : null }
+          {this.state.sideBarDisplay ? <SideBar saveAstroid={this.saveAstroid} results={this.state.results} glow={this.glow}/>  : null }
         </ReactCSSTransitionGroup>
         {this.state.buttonDisplsy ? 
           <div className="search-buttons">
@@ -86,3 +89,4 @@ class Search extends Component {
 }
 
 export default Search;
+  

@@ -1,3 +1,9 @@
+TODO:
+-write axios
+-test api
+-fix highlighting of astroids
+
+
 # NYT React Search
 
 ### Overview

@@ -6,10 +6,13 @@ import Body from "../components/body";
 
 
 class Home extends Component {
+  state = {
+    banner: "Floating Rocks"
+  }
   render() {
     return (
       <div>
-        <Jumbotron/>
+        <Jumbotron banner={this.state.banner}/>
         <Body/>
       </div>
     );

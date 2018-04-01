@@ -3,9 +3,6 @@ import { Link } from 'react-router-dom'
 import './nav.css';
 
 const Nav = (props) => {
-
-
-
   return (
     <div className="nav-container">
       <div className="nav-links">
@@ -23,7 +20,6 @@ const Nav = (props) => {
         
       </div>
     </div>
-
   )
 }
 

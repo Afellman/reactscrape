@@ -6,7 +6,7 @@ import styles from './astroids.css'
 let runani = true;
 
 const Astroids = props => {
-
+  
   // ------------------------- Canvas Stuff -------------------------------
   function startAni() {
     var sun = new Image();
@@ -15,14 +15,12 @@ const Astroids = props => {
     var background = new Image();
     var time = 0.1;
     
-
     function init() {
       sun.src = 'https://mdn.mozillademos.org/files/1456/Canvas_sun.png';
       astroid.src = 'http://icons.iconarchive.com/icons/zairaam/bumpy-planets/256/asteroid-icon.png';
       earth.src = 'https://vignette.wikia.nocookie.net/barsoom/images/1/1e/Earth.png/revision/latest?cb=20110912212924';
       window.requestAnimationFrame(draw);
     }
-
     function draw() {
       
       // getting screen center;
@@ -34,14 +32,13 @@ const Astroids = props => {
       if (document.getElementById('myCanvas')){
         var ctx = document.getElementById('myCanvas').getContext('2d');
       } else return;
-
+      
        // clear canvas
       ctx.clearRect(0, 0, window.innerWidth, window.innerHeight);
       ctx.save();
       ctx.translate(x_center, y_center);
 
       // Drawing earth
-
       ctx.drawImage(earth, 0, 0, 100 , 100);
       ctx.translate(50, 50);
       time = time + 0.1
@@ -54,12 +51,12 @@ const Astroids = props => {
         let size = sizeFull / 10;
         let speed = ((speedFull / 100000) * time);
         let distance = distanceFull / 20000;
-        console.log(distance)
+
         // scaling back the super far away ones
         if (distance > 500) {
           distance = distance / 10.5
         }
-        // trying to highlight selected astroid but teh ani keeps resetting
+        
         if (props.selectedAstroid === element.name) {
           ctx.shadowColor = "white";
           ctx.shadowBlur = 20;
@@ -87,8 +84,6 @@ const Astroids = props => {
     runani = false;
     startAni()
   }
-
-
   return(
     <div>
       <canvas id="myCanvas" width={window.innerWidth} height={window.innerHeight - 65}></canvas>
