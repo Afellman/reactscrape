@@ -1,3 +1,14 @@
+.fizzy {
+  border-radius: 5px;
+  color: white;
+  top: 50%;
+  left: 40%;
+  padding: 20px;
+  position: fixed;
+  z-index: 99;
+  background: rgb(63, 185, 94);
+}
+
 .search-buttons {
   position: fixed;
   top: 45%;

@@ -1,5 +1,5 @@
 .jumbotron {
-  background: url('http://getwallpapers.com/wallpaper/full/3/f/f/19640.jpg');
+  background: url('./banner.jpg');
   background-repeat: no-repeat;
   background-size: cover;
   min-height: 100px;

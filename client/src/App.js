@@ -4,7 +4,6 @@ import Home from './pages/Home'
 import Saved from './pages/Saved'
 import Search from './pages/Search'
 import Navbar from './components/nav'
-import Footer from './components/footer'
 
 class App extends Component {
   render() {
@@ -18,7 +17,6 @@ class App extends Component {
         <Route exact path="/saved" component={Saved} />
         <Route exact path="/astroids" component={Search} />
       </Switch>
-      <Footer />
     </div>
   </Router>
     );

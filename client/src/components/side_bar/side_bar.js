@@ -13,15 +13,14 @@ class SideBar extends Component {
   state = {
     
   }
-  saveAstroid = (astroid) => {
-  
-    API.save(astroid)
-  }
-
+ 
   render() {
     return(
       <div className="search-results">
         <ul className="list-group">
+
+        {/* building an object to send to the database when the user presses
+            the saved button. */}
           {this.props.results.map(result => {
             let object = {
               name: result.name,
@@ -41,7 +40,7 @@ class SideBar extends Component {
               <button 
                 className="btn" 
                 value={object}
-                onClick={()=>{this.saveAstroid(object)}}>Save</button>
+                onClick={()=>{this.props.saveAstroid(object)}}>Save</button>
               <hr/>
             </li>
           )}

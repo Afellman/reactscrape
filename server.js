@@ -7,7 +7,6 @@ const app = express();
 const MONGODB_URI = process.env.MONGODB_URI || "mongodb://127.0.0.1/astroids";
 const PORT = process.env.PORT || 3001;
 const routes = require('./routes')
-// Connect to the Mongo DB
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));

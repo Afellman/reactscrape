@@ -2,13 +2,14 @@ import React, { Component } from 'react';
 import API from '../../utils/scrape'
 import styles from './astroids.css'
 
-
+// variable to check if that animation has been run already.
 let runani = true;
 
 const Astroids = props => {
   
   // ------------------------- Canvas Stuff -------------------------------
   function startAni() {
+    // making new image objects.
     var sun = new Image();
     var astroid = new Image();
     var earth = new Image();
@@ -16,6 +17,7 @@ const Astroids = props => {
     var time = 0.1;
     
     function init() {
+      // adding sources to each image
       sun.src = 'https://mdn.mozillademos.org/files/1456/Canvas_sun.png';
       astroid.src = 'http://icons.iconarchive.com/icons/zairaam/bumpy-planets/256/asteroid-icon.png';
       earth.src = 'https://vignette.wikia.nocookie.net/barsoom/images/1/1e/Earth.png/revision/latest?cb=20110912212924';
@@ -56,13 +58,16 @@ const Astroids = props => {
         if (distance > 500) {
           distance = distance / 10.5
         }
-        
-        if (props.selectedAstroid === element.name) {
-          ctx.shadowColor = "white";
-          ctx.shadowBlur = 20;
-          ctx.shadowOffsetX = 5;
-          ctx.shadowOffsetY = 5;
-        }
+        // ---- trying to add highlighting when the user hovers over the data in the sidebar
+        // but I think the canvas doesn't allow for new data or data changes
+        // once the look has started? not sure.
+         
+        // if (props.selectedAstroid === element.name) {
+        //   ctx.shadowColor = "white";
+        //   ctx.shadowBlur = 20;
+        //   ctx.shadowOffsetX = 5;
+        //   ctx.shadowOffsetY = 5;
+        // }
         
         // rotating, setting distance from earth and drawing astroid.
         ctx.rotate(((2 * Math.PI) / 60) * speed);

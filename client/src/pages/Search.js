@@ -17,15 +17,19 @@ class Search extends Component {
     buttonDisplsy: true,
     detailsDisplay: false,
     selectedAstroid: "",
-    runAni: false
+    runAni: false,
+    fizzyDisplay: false,
+    style: {
+      opacity:0
+    }
   }
 
   // -------------- Function to get image data from api -----------------------
+
   getImages = (event) => {
     event.preventDefault();
     let nasaData = [];
     let date = this.state.date;
-    // ** Find todays date and pass in **
     API.getApiData(date).then(res => {
       // traversing the object.
       let meteorsObj = res.data.near_earth_objects;
@@ -34,12 +38,9 @@ class Search extends Component {
 
       this.setState({results: meteors, buttonDisplsy: false, detailsDisplay: true, runAni: true})
     })
-    // removing buttons
-     
   }
 // --------------------------------------------------------
-
-  // data binding? 
+ // updating the date in state.
   updateDate = (event) => {
     event.preventDefault()
     this.setState({date: event.target.value})
@@ -55,25 +56,57 @@ class Search extends Component {
     }
   }
 
-  glow = (event) => {
-    this.setState({selectedAstroid: event.target.className})
+  // --------------------------------------------------------------
+  saveAstroid = (astroid) => {
+    this.showSavedMessage()
+    API.save(astroid)
   }
 
- 
+
+  showSavedMessage = () => {
+    // interval loop for displaying the 'Astroid Saved' pop up, fading the 
+    // opacity in and out.
+    this.setState({fizzyDisplay: true})
+    let i = 0
+    let full = false;
+    const myInter = setInterval(()=> {
+      if(i < 1 && !full) {
+        i = i+0.01
+      } else {
+        full = true
+        i = i-0.01
+      }
+      if(i< 0) {
+        clearInterval(myInter)
+        this.setState({style : {opacity: 0}, fizzyDisplay: false })
+      }
+      this.setState({style: {opacity: i}})
+    }, 10)
+  }
 // ----------------------------------------------------------
 
 // --------------- Stuff to render ----------------------
   render() {
     return (
       <div>
+        {/* div for displaying saved message */}
+        {this.state.fizzyDisplay ? 
+          <div style={this.state.style} className="fizzy">
+            <h4>Astroid Saved</h4>
+          </div> 
+        : null}
+        {/* div for displaying the details button. Loads when date is picked */}
         {this.state.detailsDisplay ?
           <button type="submit" id="details" className="btn btn-dark" onClick={this.showBar}>Show Details</button>
         : null }  
+        {/* react component for css animations */}
         <ReactCSSTransitionGroup
           transitionName="side-bar"
           transitionEnterTimeout={500}
           transitionLeaveTimeout={300}>
-          {this.state.sideBarDisplay ? <SideBar saveAstroid={this.saveAstroid} results={this.state.results} glow={this.glow}/>  : null }
+          {/* sidebar component that displays when the details button is click */}
+          {this.state.sideBarDisplay ? <SideBar saveAstroid={this.saveAstroid} results={this.state.results}/>  : null }
+          {/* Library for applying css transitions in react. */}
         </ReactCSSTransitionGroup>
         {this.state.buttonDisplsy ? 
           <div className="search-buttons">

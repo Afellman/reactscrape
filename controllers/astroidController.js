@@ -16,7 +16,8 @@ module.exports = {
   },
   delete: (req, res) => {
     console.log('delete')
-    db.Astroid.findOne({name: req.body})
+    console.log(req.body.name)
+    db.Astroid.findOne({name: req.body.name})
       .then(dbModel => dbModel.remove())
       .then(dbMoodel => res.json(dbModel))
       .catch(err => res.status(422).json(err))

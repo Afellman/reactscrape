@@ -1,14 +1,7 @@
 #myCanvas {
   border: 1px solid black;
-  background: url('http://getwallpapers.com/wallpaper/full/1/f/e/427366.jpg');
+  background: url('./calvin.jpg');
   background-repeat: no-repeat;
   background-position-y: -100px;
   background-size: cover;
 }
-/* Hmm media queryies not working.... */
-
-/* @media screen and(min-width: 1650px){
-  #myCanvas {
-    background-position-y: -300px;
-  }
-}  */
