@@ -10,8 +10,8 @@ const routes = require('./routes')
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(routes);
 app.use(express.static("client/build"));
+app.use(routes);
 
 
 mongoose.Promise = global.Promise;
