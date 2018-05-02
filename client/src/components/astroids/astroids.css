@@ -1,7 +1,18 @@
 #myCanvas {
   border: 1px solid black;
+}
+
+#astroid-bg {
   background: url('./calvin.jpg');
-  background-repeat: no-repeat;
-  background-position-y: -100px;
+  /* background-position-y: -150px; */
   background-size: cover;
+  background-repeat: no-repeat;
+  
+}
+
+@media screen and (min-width: 1600px) {
+
+  #astroid-bg {
+    background-position-y: -150px;
+  }
 }

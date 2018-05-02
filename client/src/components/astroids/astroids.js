@@ -90,7 +90,7 @@ const Astroids = props => {
     startAni()
   }
   return(
-    <div>
+    <div id='astroid-bg'>
       <canvas id="myCanvas" width={window.innerWidth} height={window.innerHeight - 65}></canvas>
     </div>
   )
